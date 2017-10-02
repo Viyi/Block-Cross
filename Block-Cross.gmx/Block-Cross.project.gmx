@@ -21,6 +21,7 @@
     <object>objects\obj_char1</object>
     <object>objects\obj_char2</object>
     <object>objects\obj_pad</object>
+    <object>objects\obj_gamemaster</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>

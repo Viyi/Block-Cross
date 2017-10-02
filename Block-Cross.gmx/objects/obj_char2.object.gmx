@@ -26,9 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>woo = 0
-global.aspect = 64
-global.basespeed = 4
-global.turn = 1
 counter = 0
 </string>
           </argument>
@@ -52,25 +49,24 @@ counter = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(object_exists(obj_char1))
-{
+            <string>
 if(global.turn == 2){
-if(keyboard_check(vk_right)&amp;&amp; woo &lt; 1)
+if(keyboard_check(ord('D'))&amp;&amp; woo &lt; 1)
 {
 woo = 1
 
 }
-if(keyboard_check(vk_left)&amp;&amp; woo &lt; 1)
+if(keyboard_check(ord('A'))&amp;&amp; woo &lt; 1)
 {
 woo = 3
 
 }
-if(keyboard_check(vk_down)&amp;&amp; woo &lt; 1)
+if(keyboard_check(ord('S'))&amp;&amp; woo &lt; 1)
 {
 woo = 2
 
 }
-if(keyboard_check(vk_up )&amp;&amp; woo &lt; 1)
+if(keyboard_check(ord('W'))&amp;&amp; woo &lt; 1)
 {
 woo = 4
 
@@ -111,13 +107,13 @@ if(counter &lt; global.aspect)
     vspeed = 0
     if(place_meeting(x,y,obj_pad)!= true)
     {
+        global.p1score++
         instance_destroy();
+        room_restart(); 
     }
 }
 }
-}else{
-    room_restart();    
-}
+
 </string>
           </argument>
         </arguments>
