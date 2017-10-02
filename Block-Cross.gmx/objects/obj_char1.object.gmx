@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>woo = 0
+global.aspect = 64
+global.basespeed = 4
+global.turn = 1
+counter = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -47,57 +52,71 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.turn == 1)
+            <string>if(object_exists(obj_char2))
 {
- //yes I know its dumb, but this is how I did movement
- 
- //right   
-    if(x == xstart+64)
+if(global.turn == 1){
+if(keyboard_check(vk_right)&amp;&amp; woo &lt; 1)
+{
+woo = 1
+
+}
+if(keyboard_check(vk_left)&amp;&amp; woo &lt; 1)
+{
+woo = 3
+
+}
+if(keyboard_check(vk_down)&amp;&amp; woo &lt; 1)
+{
+woo = 2
+
+}
+if(keyboard_check(vk_up )&amp;&amp; woo &lt; 1)
+{
+woo = 4
+
+}
+
+if(counter &lt; global.aspect)
+{
+    if(woo &gt; 0)
     {
-        motion_set(0, 0);
-        xstart = x;
-    } 
-     if(keyboard_check_pressed(vk_right))
-    {
-      
-         motion_set(0, 2);
+       if(woo%2 == 0)
+      {
+          if(woo == 2)
+          {
+               vspeed = global.basespeed
+                counter += global.basespeed
+            }else if(woo == 4)
+         {
+             vspeed = -(global.basespeed)
+              counter += global.basespeed
+          }
+        
+       }else if(woo == 1)
+       {
+           hspeed = global.basespeed
+           counter += global.basespeed
+       }else if(woo == 3)
+       {
+           hspeed = -(global.basespeed)
+          counter += global.basespeed
+      }
     }
- //left
-    if(x == xstart-64)
+
+}else{
+    global.turn = 2   
+    counter = 0;
+    woo = 0;
+    hspeed = 0
+    vspeed = 0
+    if(place_meeting(x,y,obj_pad)!= true)
     {
-        motion_set(0, 0);
-        xstart = x;
-    } 
-     if(keyboard_check_pressed(vk_left))
-    {
-      
-         motion_set(180, 2);
+        instance_destroy();
     }
-  //up  
-    if(y == ystart-64)
-    {
-        motion_set(0, 0);
-        ystart = y;
-    } 
-     if(keyboard_check_pressed(vk_up))
-    {
-      
-         motion_set(90, 3);
-    }
-    
-    
-    
-    if(y == ystart+64)
-    {
-        motion_set(0, 0);
-        ystart = y;
-    } 
-     if(keyboard_check_pressed(vk_down))
-    {
-      
-         motion_set(270, 3);
-    }
-    
+}
+}
+}else{
+    room_restart();    
 }
 </string>
           </argument>

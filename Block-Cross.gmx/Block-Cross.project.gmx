@@ -7,16 +7,19 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_red</sprite>
+    <sprite>sprites\spr_blue</sprite>
     <sprite>sprites\spr_pad</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
+    <background>background\background1</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\p_right</path>
   </paths>
   <objects name="objects">
     <object>objects\obj_char1</object>
+    <object>objects\obj_char2</object>
     <object>objects\obj_pad</object>
   </objects>
   <rooms name="rooms">
